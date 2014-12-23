@@ -49,12 +49,12 @@
 
 ## Single Responsibility
 
-### Rule of 1
-###### [Style [Y001](#style-y001)]
+### กฎข้อที่ 1
+###### [รูปแบบ [Y001](#style-y001)]
 
-  - Define 1 component per file.
+  - ประกาศ 1 component ต่อ 1 ไฟล์
 
-  The following example defines the `app` module and its dependencies, defines a controller, and defines a factory all in the same file.
+  ตัวอย่างข้างล่างนี้คือการประกาศ `app` module และ dependencies รวมถึงประกาศ controller และ factory ในไฟล์เดียวกัน
 
   ```javascript
   /* avoid */
@@ -68,7 +68,7 @@
   function someFactory() { }
   ```
 
-  The same components are now separated into their own files.
+  และข้างล่างนี้คือทุก ๆ component ถูกแยกส่วนออกจากกัน
 
   ```javascript
   /* recommended */
@@ -100,7 +100,7 @@
   function someFactory() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## IIFE
 ### JavaScript Closures
