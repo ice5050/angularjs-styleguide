@@ -104,13 +104,13 @@
 
 ## IIFE
 ### JavaScript Closures
-###### [Style [Y010](#style-y010)]
+###### [รูปแบบ [Y010](#style-y010)]
 
-  - Wrap AngularJS components in an Immediately Invoked Function Expression (IIFE).
+  - ใส่ AngularJS component ไว้ใน Immediately Invoked Function Expression (IIFE)
 
-  *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
+  *ทำไม?*: เพราะว่า IIFE จะกำจัดตัวแปรแบบ Global ออกไป ซึ่งป้องกันการประกาศตัวแปรซ้ำกันใน Global scope
 
-  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
+  *ทำไม?*: เมื่อโค้ดถูก minified และรวมกันเป็นไฟล์เดียวเพื่อจะนำขึ้น Production จะทำให้ อาจมีการซ้ำกันของตัวแปร และมีตัวแปรใน Global scope มากมาย ซึ่ง IIFE จะช่วยป้องกันปัญหาเหล่านี้
 
   ```javascript
   /* avoid */
@@ -162,11 +162,11 @@
   })();
   ```
 
-  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax.
+  - หมายเหตุ: เพื่อความกะทัดรัด ตัวอย่างในแนวทางนี้จะไม่ใช้ IIFE เนื่องจากมันจะยาวนั่นเอง
 
   - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Modules
 
