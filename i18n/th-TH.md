@@ -170,19 +170,19 @@
 
 ## Modules
 
-### Avoid Naming Collisions
-###### [Style [Y020](#style-y020)]
+### หลีกเลี่ยงการตั้งชื่อซ้ำกัน
+###### [รูปแบบ [Y020](#style-y020)]
 
-  - Use unique naming conventions with separators for sub-modules.
+  - ใช้ชื่อที่เฉพาะเจาะจงต่อด้วย sub-modules
 
-  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`.
+  *ทำไม?*: ชื่อที่เฉพาะเจาะจงและการตั้งชื่อแบบเป็นลำดับขั้นของ submodule จะช่วยป้องกันการซ้ำกัน เช่น `app` เป็น root module ขณะที่ `app.dashboard` และ `app.users` เป็น submodule ที่ถูกใช้ใน `app` (dependencies)
 
-### Definitions (aka Setters)
-###### [Style [Y021](#style-y021)]
+### การประกาศ Module (หรือ Setters)
+###### [รูปแบบ [Y021](#style-y021)]
 
-  - Declare modules without a variable using the setter syntax.
+  - ประกาศ module โดยไม่ต้องมีตัวแปรมารับ
 
-  *Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+  *ทำไม?*: เนื่องจากเราประกาศ 1 component ต่อ 1 ไฟล์เท่านั้น จึงไม่จำเป็นจะต้องมีตัวแปรมารับ
 
   ```javascript
   /* avoid */
@@ -193,8 +193,6 @@
       'app.dashboard'
   ]);
   ```
-
-  Instead use the simple setter syntax.
 
   ```javascript
   /* recommended */
@@ -208,11 +206,11 @@
   ```
 
 ### Getters
-###### [Style [Y022](#style-y022)]
+###### [รูปแบบ [Y022](#style-y022)]
 
-  - When using a module, avoid using a variable and instead use   chaining with the getter syntax.
+  - เวลาที่ใช้ module ให้หลีกเลี่ยงการใช้ตัวแปร โดยที่ให้ใช้การ chaining แทน
 
-  *Why?* : This produces more readable code and avoids variable collisions or leaks.
+  *ทำไม?* : เพราะว่าจะช่วยให้โค้ดอ่านง่ายขึ้นและป้องกันการซ้ำกันของชื่อตัวแปร
 
   ```javascript
   /* avoid */
@@ -232,21 +230,21 @@
   ```
 
 ### Setting vs Getting
-###### [Style [Y023](#style-y023)]
+###### [รูปแบบ [Y023](#style-y023)]
 
-  - Only set once and get for all other instances.
+  - กำหนดค่าเพียงครั้งเดียวและใช้กับทุก instances
 
-  *Why?*: A module should only be created once, then retrieved from that point and after.
+  *ทำไม?*: 1 module ควรถูกสร้างเพียงครั้งเดียว และเมื่อต้องการจะใช้ module นั้น ๆ ก็ให้ใช้ getter
 
-    - Use `angular.module('app', []);` to set a module.
-    - Use  `angular.module('app');` to get a module.
+    - ใช้ `angular.module('app', []);` เมื่อต้องการกำหนดค่า module
+    - ใช้  `angular.module('app');` เมื่อต้องการ module
 
 ### Named vs Anonymous Functions
-###### [Style [Y024](#style-y024)]
+###### [รูปแบบ [Y024](#style-y024)]
 
-  - Use named functions instead of passing an anonymous function in as a callback.
+  - ใช้ named functions แทนการส่ง anonymous function ไปเป็น callback.
 
-  *Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+  *ทำไม?*: เพราะว่าจะช่วยให้โค้ดอ่านง่ายขึ้นและลดจำนวน callback code
 
   ```javascript
   /* avoid */
@@ -276,7 +274,7 @@
   function logger() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Controllers
 
