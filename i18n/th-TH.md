@@ -279,15 +279,15 @@
 ## Controllers
 
 ### controllerAs View Syntax
-###### [Style [Y030](#style-y030)]
+###### [รูปแบบ [Y030](#style-y030)]
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax.
+  - ใช้ [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) แทนการใช้ `controller with $scope`
 
-  *Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`.
+  *ทำไม?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`.
 
-  *Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+  *ทำไม?*: เพราะว่าทำให้ต้องใช้ "dotted" กับออปเจ็คใน View (เช่น `customer.name` แทนการใช้ `name`), ซึ่งทำให้มันบ่งบอกความหมายในตัวมันเอง และทำให้อ่านโค้ดได้ง่ายขึ้น อีกทั้งยังป้องกันปัญหาจากการอ้างอึงตัวแปรแบบไม่ใช้ "dotting" อีกด้วย
 
-  *Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+  *ทำไม?*: ช่วยหลีกเลี่ยงการใช้ `$parent` ใน Views ที่อยู่ใน nested controllers
 
   ```html
   <!-- avoid -->
@@ -304,15 +304,15 @@
   ```
 
 ### controllerAs Controller Syntax
-###### [Style [Y031](#style-y031)]
+###### [รูปแบบ [Y031](#style-y031)]
 
-  - Use the `controllerAs` syntax over the `classic controller with $scope` syntax.
+  - ใช้ `controllerAs` แทนการใช้ `controller with $scope`
 
-  - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
+  - `controllerAs` ใช้ `this` ใน controller ซึ่งก็คือ `$scope`
 
-  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.
+  *ทำไม?*: `controllerAs` [syntactic sugar](http://en.wikipedia.org/wiki/Syntactic_sugar) มากกว่า `$scope` และยังสามารถใช้ผูกกับ View และเข้าถึง `$scope` methods.
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) consider moving these uses to a factory and invoke from the controller.
+  *ทำไม?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move them to a factory. Consider using `$scope` in a factory, or if in a controller just when needed. เช่นเมื่อต้องการ publishing และ subscribing events ด้วย [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), หรือ [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on) ซึ่งควรจะถูกใช้ใน factory และ invoke จาก controller
 
   ```javascript
   /* avoid */
@@ -333,9 +333,9 @@
 ### controllerAs with vm
 ###### [Style [Y032](#style-y032)]
 
-  - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
+  - ใช้ตัวแปรแทนที่การใช้ `this` เมื่อใช้ `controllerAs` โดยเลือกชื่อให้เป็นมาตรฐานเช่น `vm` ซึ่งหมายถึง ViewModel
 
-  *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
+  *ทำไม?*: `this` เป็นตัวแปรที่เปลี่ยนไปตรามบริบทเช่น this ที่อยู่ใน function ใน controller อาจจะไม่ใช่ this ใน controller ก็ได้ ดังนั้นการใช้ตัวแปรแทน `this` จะช่วยป้องกันปัญหาเหล่านี้
 
   ```javascript
   /* avoid */
@@ -354,14 +354,14 @@
   }
   ```
 
-  Note: You can avoid any [jshint](http://www.jshint.com/) warnings by placing the comment below above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+  หมายเหตุ: คุณสามารถปิดคำเตือนใน [jshint](http://www.jshint.com/) ด้วยการใส่คอมเมนต์ที่อยู่ข้างล่างนี้เข้าไปก่อนโค้ดบรรทัดนั้น แต่มันก็ไม่จำเป็นเวลาที่ฟังก์ชั่นถูกตั้งชื่อด้วยตัวใหญ่เพราะมันหมายความว่าเป็น constructor function ซึ่งมันก็คือ controller ใน AngularJS
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+  หมายเหตุ: เมื่อสร้าง watches ใน controller ที่ใช้ `controller as` คุณสามารถที่จะ watch `vm.*` member ด้วยรูปแบบข้างล่างนี้ (Create watches with caution as they add more load to the digest cycle.)
 
   ```html
   <input ng-model="vm.title"/>
@@ -380,13 +380,13 @@
   ```
 
 ### Bindable Members Up Top
-###### [Style [Y033](#style-y033)]
+###### [รูปแบบ [Y033](#style-y033)]
 
-  - Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
+  - ใส่ bindable members ไว้ส่วนบนสุดของ controller โดยเรียงลำดับตามตัวอักษร
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View.
+    *ทำไม?*: การใส่ bindable members ไว้ส่วนบนสุดช่วยทำให้อ่านโค้ดได้ง่ายขึ้น และยังแสดงถึง members ที่สามารถใช้ใน View ได้อีกด้วย
 
-    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
+    *ทำไม?*: การกำหนดค่าด้วย anonymous functions มันง่ายก็จริง แต่มันทำให้โค้ดอ่านยากขึ้น
 
   ```javascript
   /* avoid */
@@ -434,7 +434,7 @@
 
     ![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angularjs-styleguide/master/assets/above-the-fold-1.png)
 
-  Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
+  หมายเหตุ: ถ้าฟังก์ชั่นยาวแค่บรรทัดเดียวก็สามารถนำมาไว้ด้านบนได้ (ถ้าไม่ทำให้โค้ดอ่านยากขึ้น)
 
   ```javascript
   /* avoid */
@@ -469,19 +469,19 @@
   ```
 
 ### Function Declarations to Hide Implementation Details
-###### [Style [Y034](#style-y034)]
+###### [รูปแบบ [Y034](#style-y034)]
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - ใช้การประกาศฟังก์ชั่นเพื่อซ่อนโค้ดภายในฟังก์ชั่น และให้ bindable members อยู่ส่วนบนสุด โดยเมื่อต้องการ bind ฟังก์ชั่นใน controller ก็แค่ทำการอ้างถึงฟังก์ชั่นที่ประกาศไว้ส่วนนี้จะเหมือนกับส่วน Bindable Members Up Top ซึ่งอ่านเพิ่มเติมได้[ที่นี่](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+    *ทำไม?*: การใส่ bindable members ไว้ส่วนบนสุดช่วยทำให้อ่านโค้ดได้ง่ายขึ้น และยังแสดงถึง members ที่สามารถใช้ใน View ได้อีกด้วย (เหมือนข้างบน)
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *ทำไม?*: การประกาศฟังก์ชั่นไว้ข้างล่างจะทำให้ลดความซับซ้อนในไฟล์นั้น ๆ ได้ ซึ่งทำให้เห็น members ได้ทั้งหมดในส่วนบนของไฟล์
 
-    *Why?*: Function declaration are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *ทำไม?*: การประกาศฟังก์ชั่นทำให้ไม่ต้องกังวลว่าต้องประกาศข้างบนก่อนเรียกใช้ ไม่เหมือนกับ Function Expression
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
+    *ทำไม?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
 
-    *Why?*: Order is critical with function expressions
+    *ทำไม?*: Function Expression จะทำให้มีปัญหาเรื่องลำดับการประกาศ
 
   ```javascript
   /**
@@ -544,15 +544,15 @@
   ```
 
 ### Defer Controller Logic
-###### [Style [Y035](#style-y035)]
+###### [รูปแบบ [Y035](#style-y035)]
 
-  - Defer logic in a controller by delegating to services and factories.
+  - ย้าย logic จาก controller โดยการแยกส่วนการทำงานไปไว้ใน services และ factories.
 
-    *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
+    *ทำไม?*: Logic อาจจะถูกใช้บ่อย ๆ ใน controller ต่าง ๆ โดยการเรียกผ่านฟังก์ชั่น
 
-    *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
+    *ทำไม?*: Logic ที่อยู่ใน service สามารถแยกส่วนการทดสอบได้ โดยที่การเรียกใช้ผ่านฟังก์ชั่นใน controller ก็สามารถที่จะ mock ได้ง่ายด้วย
 
-    *Why?*: Removes dependencies and hides implementation details from the controller.
+    *ทำไม?*: กำจัด dependencies และซ่อนการทำงานจาก controller
 
   ```javascript
 
@@ -603,14 +603,14 @@
   ```
 
 ### Keep Controllers Focused
-###### [Style [Y037](#style-y037)]
+###### [รูปแบบ [Y037](#style-y037)]
 
-  - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view.
+  - สร้าง 1 controller สำหรับ 1 view และอย่าใช้ซ้ำกับ view อื่น ๆ อีก และทำการย้าย logic ที่สามารถใช้ซ้ำได้ไปไว้ใน factory และทำให้ controller โฟกัสแค่ view นั้น ๆ
 
-    *Why?*: Reusing controllers with several views is brittle and good end to end (e2e) test coverage is required to ensure stability across large applications.
+    *ทำไม?*: การใช้ controller กับหลาย ๆ view ทำให้มันพังได้ง่าย and good end to end (e2e) test coverage is required to ensure stability across large applications.
 
 ### Assigning Controllers
-###### [Style [Y038](#style-y038)]
+###### [รูปแบบ [Y038](#style-y038)]
 
   - When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes.
 
@@ -664,7 +664,7 @@
   </div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Services
 
