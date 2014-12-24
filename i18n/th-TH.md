@@ -877,15 +877,15 @@
 ## Data Services
 
 ### Separate Data Calls
-###### [Style [Y060](#style-y060)]
+###### [รูปแบบ [Y060](#style-y060)]
 
-  - Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
+  - ย้าย logic สำหรับการจัดการข้อมูลไปไว้ใน factory และทำให้ data services รับผิดชอบส่วนการเรียก XHR, local storage, stashing in memory หรือการกระทำกับข้อมูลใด ๆ ก็ตาม
 
-    *Why?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and lets the controller be simpler and more focused on the view.
+    *ทำไม?*: หน้าที่ของ controller คือการแสดงผลและการเก็บข้อมูลจาก View ดังนั้น controller ไม่ควรสนใจวิธีการจัดการข้อมูล สิ่งที่ controller ทำควรเป็นแค่การเรียกใช้เท่านั้น ซึ่งจะช่วยให้ controller โฟกัสเพียงแค่ View
 
-    *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
+    *ทำไม?*: เพราะทำให้การทดสอบซึ่งไม่ว่าจะจำลองหรือใช้ข้อมูลจริงเป็นไปได้ง่ายขึ้น
 
-    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+    *ทำไม?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as $http. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
 
   ```javascript
   /* recommended */
@@ -917,8 +917,6 @@
       }
   }
   ```
-
-    Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
 
   ```javascript
   /* recommended */
@@ -953,11 +951,11 @@
   ```
 
 ### Return a Promise from Data Calls
-###### [Style [Y061](#style-y061)]
+###### [รูปแบบ [Y061](#style-y061)]
 
-  - When calling a data service that returns a promise such as $http, return a promise in your calling function too.
+  - ในการเรียก data service ที่ทำการคืนค่า promise ให้ทำการคืนค่า promise ต่อไปด้วย
 
-    *Why?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
+    *ทำไม?*: เพราะจะทำให้สามารถที่จะส่งต่อ promises ไปได้เรื่อย ๆ
 
   ```javascript
   /* recommended */
@@ -997,7 +995,7 @@
   }
   ```
 
-    **[Back to top](#table-of-contents)**
+    **[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Directives
 ### Limit 1 Per File
