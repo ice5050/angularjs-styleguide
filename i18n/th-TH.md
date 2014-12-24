@@ -669,11 +669,11 @@
 ## Services
 
 ### Singletons
-###### [Style [Y040](#style-y040)]
+###### [รูปแบบ [Y040](#style-y040)]
 
-  - Services are instantiated with the `new` keyword, use `this` for public methods and variables. Since these are so similar to factories, use a factory instead for consistency.
+  - Services จะถูกใช้โดยการ `new` ดังนั้นใช้ `this` สำหรับ public methods และตัวแปรต่าง ๆ ด้วยความที่ Service มันคล้ายกับ factory มาก ๆ ดังนั้นให้ใช้ factory แทน เพื่อความเป็นมาตรฐาน
 
-    Note: [All AngularJS services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
+    หมายเหตุ: [ทุก ๆ  Service เป็น Singletons](https://docs.angularjs.org/guide/services) This means that there is only one instance of a given service per injector.
 
   ```javascript
   // service
@@ -703,7 +703,7 @@
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Factories
 
