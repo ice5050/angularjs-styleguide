@@ -1586,13 +1586,13 @@
 ## Exception Handling
 
 ### decorators
-###### [Style [Y110](#style-y110)]
+###### [รูปแบบ [Y110](#style-y110)]
 
   - Use a [decorator](https://docs.angularjs.org/api/auto/service/$provide#decorator), at config time using the [`$provide`](https://docs.angularjs.org/api/auto/service/$provide) service, on the [`$exceptionHandler`](https://docs.angularjs.org/api/ng/service/$exceptionHandler) service to perform custom actions when exceptions occur.
 
-    *Why?*: Provides a consistent way to handle uncaught AngularJS exceptions for development-time or run-time.
+    *ทำไม?*: เพื่อเป็นการสร้างวิธีที่มาตรฐานในการจัดการกับ exception ที่ตรวจจับไม่ได้
 
-    Note: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
+    หมายเหตุ: Another option is to override the service instead of using a decorator. This is a fine option, but if you want to keep the default behavior and extend it a decorator is recommended.
 
     ```javascript
     /* recommended */
@@ -1627,13 +1627,13 @@
     ```
 
 ### Exception Catchers
-###### [Style [Y111](#style-y111)]
+###### [รูปแบบ [Y111](#style-y111)]
 
-  - Create a factory that exposes an interface to catch and gracefully handle exceptions.
+  - สร้าง factory เพื่อเป็น interface ในการดักจับและจัดการกับ exceptions
 
-    *Why?*: Provides a consistent way to catch exceptions that may be thrown in your code (e.g. during XHR calls or promise failures).
+    *ทำไม?*: เพื่อเป็นการสร้างวิธีที่มาตรฐานสำหรับการดักจับ exceptions (เช่น ระหว่างการเรียก XHR หรือ การล้มเหลวของ promise)
 
-    Note: The exception catcher is good for catching and reacting to specific exceptions from calls that you know may throw one. For example, when making an XHR call to retrieve data from a remote web service and you want to catch any exceptions from that service and react uniquely.
+    หมายเหตุ: ตัวจับ exception มันดีต่อการกระทำกับ exceptions ที่เฉพาะเจาะจงในจุดที่คุณรู้ว่ามันอาจจะเกิด exception ตัวอย่างเช่น เมื่อเรียก XHR เพื่อรับข้อมูลและคุณต้องการที่จะจับทุก ๆ  exceptions ที่อาจเกิดระหว่างการเรียก XHR นั้น และทำการจัดการแบบที่คุณต้องการ
 
     ```javascript
     /* recommended */
@@ -1658,13 +1658,13 @@
     ```
 
 ### Route Errors
-###### [Style [Y112](#style-y112)]
+###### [รูปแบบ [Y112](#style-y112)]
 
-  - Handle and log all routing errors using [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError).
+  - จัดการและเก็บ log สำหรับทุก ๆ  routing errors โดยใช้ [`$routeChangeError`](https://docs.angularjs.org/api/ngRoute/service/$route#$routeChangeError)
 
-    *Why?*: Provides a consistent way handle all routing errors.
+    *ทำไม?*: เพื่อสร้างวิธีที่มาตรฐานสำหรับการจัดการกับ routing errors
 
-    *Why?*: Potentially provides a better user experience if a routing error occurs and you route them to a friendly screen with more details or  recovery options.
+    *ทำไม?*: เพื่อทำการสื่อสารกับผู้ใช้ได้ดีขึ้นในกรณีที่เกิด routing error
 
     ```javascript
     /* recommended */
@@ -1689,7 +1689,7 @@
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Naming
 
