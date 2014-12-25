@@ -1237,13 +1237,13 @@
 ## Resolving Promises for a Controller
 
 ### Controller Activation Promises
-###### [Style [Y080](#style-y080)]
+###### [รูปแบบ [Y080](#style-y080)]
 
   - Resolve start-up logic for a controller in an `activate` function.
 
-    *Why?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
+    *ทำไม?*: การใส่ logic เริ่มต้นไว้ในที่ ๆ เป็นมาตรฐานช่วยให้สามารถหาหรือแก้ไขได้ง่ายขึ้น
 
-    Note: If you need to conditionally cancel the route before you start use the controller, use a route resolve instead.
+    หมายเหตุ: If you need to conditionally cancel the route before you start use the controller, use a route resolve instead.
 
   ```javascript
   /* avoid */
@@ -1280,11 +1280,11 @@
   ```
 
 ### Route Resolve Promises
-###### [Style [Y081](#style-y081)]
+###### [รูปแบบ [Y081](#style-y081)]
 
   - When a controller depends on a promise to be resolved, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
 
-    *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+    *ทำไม?*: บางครั้ง controller ก็ต้องการข้อมูลก่อนที่มันจะถูกโหลด ซึ่งข้อมูลนั้นอาจจะมาจาก promise โดยเรียกผ่าน factory หรือ [$http](https://docs.angularjs.org/api/ng/service/$http) โดยการใช้ [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) จะทำให้สามารถรอ resolve promise ก่อนที่ controller จะถูกโหลดได้
 
   ```javascript
   /* avoid */
@@ -1337,14 +1337,14 @@
   }
   ```
 
-    Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+    หมายเหตุ: โค้ดตัวอย่างตรงส่วน dependency `movieService` ไม่ปลอดภัยเวลาที่ถูก minification(ลดขนาดไฟล์) ซึ่งวิธีที่ทำให้ปลอดภัยนั้นอ่านได้ที่ส่วน [dependency injection](#manual-annotating-for-dependency-injection) และ [minification and annotation](#minification-and-annotation).
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Manual Annotating for Dependency Injection
 
 ### UnSafe from Minification
-###### [Style [Y090](#style-y090)]
+###### [style [Y090](#style-y090)]
 
   - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
 
@@ -2596,3 +2596,4 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 **[Back to top](#table-of-contents)**
+
