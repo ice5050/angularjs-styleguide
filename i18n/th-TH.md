@@ -1344,11 +1344,11 @@
 ## Manual Annotating for Dependency Injection
 
 ### UnSafe from Minification
-###### [style [Y090](#style-y090)]
+###### [รูปแบบ [Y090](#style-y090)]
 
-  - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
+  - หลีกเลี่ยงการประกาศ dependencies แบบไม่ปลอดภัย
 
-    *Why?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+    *ทำไม?*: เนื่องจากเวลาที่ลดขนาดไฟล์นั้น parameters จะถูกเปลี่ยนชื่อเป็นตัวแปรย่อ ๆ เช่น `common` และ `dataservice` อาจจะกลายเป็น `a` และ `b` และ AngularJS จะหามันไม่เจอ
 
     ```javascript
     /* avoid - not minification-safe*/
@@ -1360,7 +1360,7 @@
     }
     ```
 
-    This code may produce mangled variables when minified and thus cause runtime errors.
+    โค้ดนี้อาจจะทำให้เกิด runtime errors หลังจากที่ถูกลดขนาดไฟล์ ซึ่งโค้ดข้างล่างนี้เป็นตัวอย่างหลังจากลดขนาดไฟล์
 
     ```javascript
     /* avoid - not minification-safe*/
@@ -1368,15 +1368,15 @@
     ```
 
 ### Manually Identify Dependencies
-###### [Style [Y091](#style-y091)]
+###### [รูปแบบ [Y091](#style-y091)]
 
-  - Use `$inject` to manually identify your dependencies for AngularJS components.
+  - ใช้ `$inject` ในการบอกถึง dependencies โดยตรง
 
-    *Why?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+    *ทำไม?*: เนื่องจากวิธีนี้ถูกใช้โดย [`ng-annotate`](https://github.com/olov/ng-annotate) ซึ่งแนะนำให้ใช้เพื่อป้องกันปัญหาหลังจากการลดขนาดไฟล์ ถ้า `ng-annotate` ตรวจพบเจอ injection มันจะไม่สร้างขึ้นมาซ้ำอีก
 
-    *Why?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by AngularJS.
+    *ทำไม?*: วิธีนี้จะช่วยป้องกัน dependencies ของคุณจากปัญหาการลดขนาดไฟล์
 
-    *Why?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function.
+    *ทำไม?*: วิธีนี้จะหลีกเลี่ยงการประกาศ dependencies แบบยาว ๆ ในบรรทัดที่ประกาศ controller ซึ่งบางครั้งทำให้อ่านยากขึ้น
 
     ```javascript
     /* avoid */
@@ -1411,9 +1411,9 @@
     }
     ```
 
-    Note: When your function is below a return statement the $inject may be unreachable (this may happen in a directive). You can solve this by either moving the $inject above the return statement or by using the alternate array injection syntax.
+    หมายเหตุ: ให้ระวังเมื่อฟังก์ชั่นอยู่ข้างล่างคำสั่ง return มันจะทำให้ไม่พบ $inject (อาจเกิดขึ้นได้ใน directive) ซึ่งสามารถแก้ไขได้ด้วยการย้าย $inject ไปไว้ข้างบนคำสั่ง return หรือการใช้ array injection
 
-    Note: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduced a feature where it moves the `$inject` to where it is reachable.
+    หมายเหตุ: [`ng-annotate 0.10.0`](https://github.com/olov/ng-annotate) introduced a feature where it moves the `$inject` to where it is reachable.
 
     ```javascript
     // inside a directive definition
@@ -1442,13 +1442,13 @@
     ```
 
 ### Manually Identify Route Resolver Dependencies
-###### [Style [Y092](#style-y092)]
+###### [รูปแบบ [Y092](#style-y092)]
 
-  - Use $inject to manually identify your route resolver dependencies for AngularJS components.
+  - ใช้ $inject ในการบอกถึง dependencies โดยตรง
 
-    *Why?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
+    *ทำไม?*: วิธีนี้จะกำจัดการใช้ anonymous function สำหรับ route resolver ออกไป ซึ่งช่วยให้โค้ดอ่านได้ง่ายขึ้น
 
-    *Why?*: An `$inject` statement can easily precede the resolver to handle making any dependencies minification safe.
+    *ทำไม?*: คำสั่ง `$inject` จะช่วยให้ปลอดภัยจากการลดขนาดไฟล์
 
     ```javascript
     /* recommended */
@@ -1470,7 +1470,7 @@
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Minification and Annotation
 
@@ -2596,4 +2596,3 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 **[Back to top](#table-of-contents)**
-
