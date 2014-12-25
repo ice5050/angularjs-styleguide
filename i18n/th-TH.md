@@ -999,13 +999,13 @@
 
 ## Directives
 ### Limit 1 Per File
-###### [Style [Y070](#style-y070)]
+###### [รูปแบบ [Y070](#style-y070)]
 
-  - Create one directive per file. Name the file for the directive.
+  - สร้าง 1 directive ต่อ 1 ไฟล์เท่านั้น
 
-    *Why?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module.
+    *ทำไม?*: ถึงแม้ว่าการรวมหลาย ๆ directive ในไฟล์เดียวจะง่ายก็จริง แต่มันทำให้ยากต่อการแชร์ directive กันระหว่าง app หรือ module
 
-    *Why?*: One directive per file is easy to maintain.
+    *ทำไม?*: เนื่องจากง่ายต่อการจัดการ
 
   ```javascript
   /* avoid */
@@ -1088,34 +1088,34 @@
   }
   ```
 
-    Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and it's file name distinct and clear. Some examples are below, but see the naming section for more recommendations.
+    หมายเหตุ: มีหลายวิธีที่ใช้ในการตั้งชื่อ ซึ่งให้เลือกชื่อที่ชัดเจน สามารถดูตัวอย่างได้ข้างล่าง แต่อย่าลืมดูหัวข้อการตั้งชื่อด้วยหล่ะ
 
 ### Manipulate DOM in a Directive
-###### [Style [Y072](#style-y072)]
+###### [รูปแบบ [Y072](#style-y072)]
 
-  - When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow.
+  - ใช้ directive จัดการกับ DOM แต่ถ้าสามารถใช้วิธีอื่น ๆ เช่น CSS, [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) หรือ [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide) ได้ ให้ใช้วิธีเหล่านี้แทน
 
-    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
+    *ทำไม?*: เนื่องจากการจัดการกับ DOM จะทำให้ทดสอบได้ยาก และมันมีวิธีอื่น ๆ ที่สามารถใช้แทนกันได้ เช่น CSS, animations, templates
 
 ### Provide a Unique Directive Prefix
-###### [Style [Y073](#style-y073)]
+###### [รูปแบบ [Y073](#style-y073)]
 
-  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which is declared in HTML as `acme-sales-customer-info`.
+  - ให้ใช้ชื่อที่สั้น เฉพาะเจาะจง และบ่งบอกความหมายไว้หน้า directive เช่น `acmeSalesCustomerInfo` โดยการใช้ใน html คือ `acme-sales-customer-info`
 
-    *Why?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company.
+    *ทำไม?*: คำนำหน้าสามารถบ่งบอกความหมายได้ เช่น คำนำหน้า `cc-` หมายถึง directive ที่เป็นส่วนหนึ่งของแอป CodeCamper หรือ `acme-` หมายถึง directive สำหรับบริษัท Acme
 
-    Note: Avoid `ng-` as these are reserved for AngularJS directives.Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/).
+    หมายเหตุ: ให้หลีกเลี่ยงการใช้ `ng-` เป็นคำนำหน้าเนื่องจากเป็นคำสงวนไว้สำหรับ AngularJS directives หรือ `ion-` ที่ใช้กับ [Ionic Framework](http://ionicframework.com/) เป็นต้น
 
 ### Restrict to Elements and Attributes
-###### [Style [Y074](#style-y074)]
+###### [รูปแบบ [Y074](#style-y074)]
 
-  - When creating a directive that makes sense as a standalone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when its standalone and as an attribute when it enhances its existing DOM element.
+  - การสร้าง directive จะใช้เพียง `E` (custom element) และ `A` (custom attribute) เท่านั้น ซึ่งปกติจะใช้ `EA` ซึ่ง `E` หมายถึง standalone element และ `A` ก็คือใช้กับ DOM ที่มีอยู่แล้ว
 
-    *Why?*: It makes sense.
+    *ทำไม?*: ก็มันเข้าท่า
 
-    *Why?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
+    *ทำไม?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
 
-    Note: EA is the default for AngularJS 1.3 +
+    หมายเหตุ: EA เป็นค่าเริ่มต้นใน AngularJS 1.3 ขึ้นไป
 
   ```html
   <!-- avoid -->
@@ -1169,17 +1169,17 @@
   ```
 
 ### Directives and ControllerAs
-###### [Style [Y075](#style-y075)]
+###### [รูปแบบ [Y075](#style-y075)]
 
-  - Use `controller as` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
+  - ใช้ `controller as` กับ directive เพื่อความเป็นมาตรฐาน
 
-    *Why?*: It makes sense and it's not difficult.
+    *ทำไม?*: ก็มันเข้าท่าแถมมันก็ไม่ได้ยากอะไรด้วย
 
-    Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place.
+    หมายเหตุ: directive ข้างล่างนี้จะแสดงถึงวิธีที่สามารถใช้ scope และ controller ด้วย controllerAs ซึ่งผมไว้ในไฟล์เดียวกันเพราะต้องการให้มันอยู่ที่เดียวกัน (ไม่อยากแยกในตัวอย่าง)
 
-    Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
+    หมายเหตุ: เกี่ยวกับ dependency injection ดูเพิ่มเติมได้ที่ [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
 
-    Note: Note that the directive's controller is outside the directive's closure. This style eliminates issues where the injection gets created as unreachable code after a `return`.
+    หมายเหตุ: Note that the directive's controller is outside the directive's closure. This style eliminates issues where the injection gets created as unreachable code after a `return`.
 
   ```html
   <div my-example max="77"></div>
@@ -1232,7 +1232,7 @@
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Resolving Promises for a Controller
 
