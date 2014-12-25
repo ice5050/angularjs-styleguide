@@ -1475,17 +1475,17 @@
 ## Minification and Annotation
 
 ### ng-annotate
-###### [Style [Y100](#style-y100)]
+###### [รูปแบบ [Y100](#style-y100)]
 
-  - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/** @ngInject */`
+  - ใช้ [ng-annotate](//github.com/olov/ng-annotate) กับ [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) และทำการคอมเมนต์ฟังก์ชั่นที่ต้องการ automated dependency injection ด้วย `/** @ngInject */`
 
-    *Why?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
+    *ทำไม?*: วิธีนี้จะช่วยป้องกันปัญหาจากการลดขนาดไฟล์ในกรณีที่ใช้การประกาศแบบไม่ปลอดภัย
 
-    *Why?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated
+    *ทำไม?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated
 
-    >I prefer Gulp as I feel it is easier to write, to read, and to debug.
+    >ผมชอบ Gulp มากกว่านะ ผมรู้สึกว่ามันเขียนง่าย และอ่านง่าย
 
-    The following code is not using minification safe dependencies.
+    โค้ดข้างล่างนี้เป็นการประกาศ dependencies แบบไม่ปลอดภัย(แต่ใช้ ng-annotate)
 
     ```javascript
     angular
@@ -1505,7 +1505,7 @@
     }
     ```
 
-    When the above code is run through ng-annotate it will produce the following output with the `$inject` annotation and become minification-safe.
+    เมื่อโค้ดข้างบนผ่าน ng-annotate มันจะสร้าง `$inject`  ให้ ซึ่งกลายมาเป็นการประกาศแบบปลอดภัย
 
     ```javascript
     angular
@@ -1527,9 +1527,9 @@
     Avengers.$inject = ['storageService', 'avengerService'];
     ```
 
-    Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    หมายเหตุ: ถ้า `ng-annotate` ตรวจพบ injection มันจะไม่สร้างขึ้นมาซ้ำอีก
 
-    Note: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+    หมายเหตุ: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
 
     ```javascript
     // Using @ngInject annotations
@@ -1548,17 +1548,17 @@
     }
     ```
 
-    > Note: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
+    > หมายเหตุ: Starting from AngularJS 1.3 use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Use Gulp or Grunt for ng-annotate
-###### [Style [Y101](#style-y101)]
+###### [รูปแบบ [Y101](#style-y101)]
 
-  - Use [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) or [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) in an automated build task. Inject `/* @ngInject */` prior to any function that has dependencies.
+  - ใช้ [gulp-ng-annotate](https://www.npmjs.org/package/gulp-ng-annotate) หรือ [grunt-ng-annotate](https://www.npmjs.org/package/grunt-ng-annotate) ใน automated build task และใส่ `/* @ngInject */` ไปที่ทุก ๆ ฟังก์ชั่นที่มี dependencies
 
-    *Why?*: ng-annotate will catch most dependencies, but it sometimes requires hints using the `/* @ngInject */` syntax.
+    *ทำไม?*: ถึงแม้ว่า ng-annotate จะตรวจเจอ dependencies เกือบทั้งหมด แต่บางครั้งมันก็ต้องใช้ `/* @ngInject */`
 
-    The following code is an example of a gulp task using ngAnnotate
+    โค้ดข้างล่างนี้เป็นตัวอย่างของ gulp task ที่ใช้ ngAnnotate
 
     ```javascript
     gulp.task('js', ['jshint'], function() {
@@ -1581,7 +1581,7 @@
 
     ```
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Exception Handling
 
