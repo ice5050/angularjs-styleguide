@@ -1694,24 +1694,24 @@
 ## Naming
 
 ### Naming Guidelines
-###### [Style [Y120](#style-y120)]
+###### [รูปแบบ [Y120](#style-y120)]
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`. There are 2 names for most assets:
-    *   the file name (`avengers.controller.js`)
-    *   the registered component name with Angular (`AvengersController`)
+  - ใช้ชื่อที่เป็นมาตรฐานสำหรับทุก ๆ components โดยใช้การบอกถึง feature ของ component แล้วตามด้วยชนิดของ component นั้น ๆ ซึ่งแนะนำให้ใช้ `feature.type.js` ซึ่งจะมี 2 ชื่อประกอบด้วย
+    *   ชื่อไฟล์ (`avengers.controller.js`)
+    *   ชื่อ component ใน AngularJS (`AvengersController`)
 
-    *Why?*: Naming conventions help provide a consistent way to find content at a glance. Consistency within the project is vital. Consistency with a team is important. Consistency across a company provides tremendous efficiency.
+    *ทำไม?*: เนื่องจากการตั้งชื่อที่เป็นมาตรฐานจะช่วยให้สามารถหาไฟล์ได้ง่ายขึ้น และทำให้การทำงานเป็นทีมมีประสิทธิภาพ
 
-    *Why?*: The naming conventions should simply help you find your code faster and make it easier to understand.
+    *ทำไม?*: เนื่องจากทำให้สามารถเข้าใจโค้ดได้ง่ายขึ้น
 
 ### Feature File Names
-###### [Style [Y121](#style-y121)]
+###### [รูปแบบ [Y121](#style-y121)]
 
-  - Use consistent names for all components following a pattern that describes the component's feature then (optionally) its type. My recommended pattern is `feature.type.js`.
+  - ใช้ชื่อที่เป็นมาตรฐานสำหรับทุก ๆ components โดยใช้การบอกถึง feature ของ component แล้วตามด้วยชนิดของ component นั้น ๆ ซึ่งแนะนำให้ใช้ `feature.type.js`
 
-    *Why?*: Provides a consistent way to quickly identify components.
+    *ทำไม?*: วิธีนี้จะทำให้ชื่อบ่งบอกถึงความหมายของ component นั้น ๆ
 
-    *Why?*: Provides pattern matching for any automated tasks.
+    *ทำไม?*: ทำให้สามารถทำงานร่วมกับทุก ๆ automated tasks
 
     ```javascript
     /**
@@ -1760,7 +1760,7 @@
     avenger-profile.directive.spec.js
     ```
 
-  Note: Another common convention is naming controller files without the word `controller` in the file name such as `avengers.js` instead of `avengers.controller.js`. All other conventions still hold using a suffix of the type. Controllers are the most common type of component so this just saves typing and is still easily identifiable. I recommend you choose 1 convention and be consistent for your team.
+  หมายเหตุ: มีมาตรฐานอื่นที่ตั้งชื่อ controller โดยไม่มีคำว่า `controller` ในชื่อไฟล์ เช่นใช้ `avengers.js` แทนการใช้ `avengers.controller.js` ซึ่งแนะนำให้เลือกมา 1 วิธีและใช้วิธีนั้นเป็นมาตรฐานสำหรับทีมของคุณ
 
     ```javascript
     /**
@@ -1772,13 +1772,13 @@
     ```
 
 ### Test File Names
-###### [Style [Y122](#style-y122)]
+###### [รูปแบบ [Y122](#style-y122)]
 
-  - Name test specifications similar to the component they test with a suffix of `spec`.
+  - ตั้งชื่อไฟล์ทดสอบเหมือนกับ component โดยมี `spec` ต่อท้าย
 
-    *Why?*: Provides a consistent way to quickly identify components.
+    *ทำไม?*: การตั้งชื่อที่เป็นมาตรฐานจะบ่งบอกความหมาย
 
-    *Why?*: Provides pattern matching for [karma](http://karma-runner.github.io/) or other test runners.
+    *ทำไม?*: เป็นหลักการตั้งชื่อสำหรับ [karma](http://karma-runner.github.io/) หรือตัวทดสอบอื่น ๆ
 
     ```javascript
     /**
@@ -1791,13 +1791,13 @@
     ```
 
 ### Controller Names
-###### [Style [Y123](#style-y123)]
+###### [รูปแบบ [Y123](#style-y123)]
 
-  - Use consistent names for all controllers named after their feature. Use UpperCamelCase for controllers, as they are constructors.
+  - ใช้ชื่อที่เป็นมาตรฐานสำหรับทุก ๆ controller หลังชื่อ feature โดยใช้ UpperCamelCase
 
-    *Why?*: Provides a consistent way to quickly identify and reference controllers.
+    *ทำไม?*: การตั้งชื่อที่เป็นมาตรฐานจะบ่งบอกความหมาย
 
-    *Why?*: UpperCamelCase is conventional for identifying object that can be instantiated using a constructor.
+    *ทำไม?*: UpperCamelCase เป็นมาตรฐานสำหรับ object ที่สามารถถูกสร้างโดยใช้ constructor ได้
 
     ```javascript
     /**
@@ -1813,13 +1813,13 @@
     ```
 
 ### Controller Name Suffix
-###### [Style [Y124](#style-y124)]
+###### [รูปแบบ [Y124](#style-y124)]
 
-  - Append the controller name with the suffix `Controller` or with no suffix. Choose 1, not both.
+  - เลือกที่จะเพิ่มคำว่า `Controller` ต่อจากชื่อหรือไม่เพิ่มก็ได้ โดยเลือกเพียงวิธีเดียวเท่านั้น
 
-    *Why?*: The `Controller` suffix is more commonly used and is more explicitly descriptive.
+    *ทำไม?*: คำว่า `Controller` ถูกใช้เป็นมาตรฐานทั่วไปและช่วยบอกว่าเป็น controller
 
-    *Why?*: Omitting the suffix is more succinct and the controller is often easily identifiable even without the suffix.
+    *ทำไม?*: การไม่ต่อท้ายด้วยคำว่า `Controller` ช่วยใช้ชื่อ controller รวบรัดมากขึ้น
 
     ```javascript
     /**
@@ -1848,11 +1848,11 @@
     ```
 
 ### Factory Names
-###### [Style [Y125](#style-y125)]
+###### [รูปแบบ [Y125](#style-y125)]
 
-  - Use consistent names for all factories named after their feature. Use camel-casing for services and factories.
+  - ใช้ชื่อ factory ต่อจากชื่อ feature และใช้ camel-casing สำหรับ service และ factory
 
-    *Why?*: Provides a consistent way to quickly identify and reference factories.
+    *ทำไม?*: การตั้งชื่อที่เป็นมาตรฐานจะบ่งบอกความหมาย
 
     ```javascript
     /**
@@ -1868,11 +1868,11 @@
     ```
 
 ### Directive Component Names
-###### [Style [Y126](#style-y126)]
+###### [รูปแบบ [Y126](#style-y126)]
 
-  - Use consistent names for all directives using camel-case. Use a short prefix to describe the area that the directives belong (some example are company prefix or project prefix).
+  - ใช้ camel-case สำหรับทุก ๆ directive และใช้คำนำหน้าสั้น ๆ สำหรับอธิบายขอบเขตของ directive เช่น ชื่อบริษัทหรือชื่อโปรเจ็ค เป็นต้น
 
-    *Why?*: Provides a consistent way to quickly identify and reference components.
+    *ทำไม?*: การตั้งชื่อที่เป็นมาตรฐานจะบ่งบอกความหมาย
 
     ```javascript
     /**
@@ -1890,29 +1890,29 @@
     ```
 
 ### Modules
-###### [Style [Y127](#style-y127)]
+###### [รูปแบบ [Y127](#style-y127)]
 
-  -  When there are multiple modules, the main module file is named `app.module.js` while other dependent modules are named after what they represent. For example, an admin module is named `admin.module.js`. The respective registered module names would be `app` and `admin`.
+  -  เมื่อมีหลาย ๆ module มากขึ้น ให้ทำการตั้งชื่อ module หลักด้วยชื่อ `app.module.js` ขณะที่ module อื่น ๆ ตั้งชื่อเป็นความหมายของ module นั้น ๆ เช่น สำหรับ admin module ก็ตั้งชื่อ `admin.module.js` โดยใช้ชื่อใน Angular คือ  `app` และ `admin`
 
-    *Why?*: Provides consistency for multiple module apps, and for expanding to large applications.
+    *ทำไม?*: สร้างมาตรฐานสำหรับแอปที่มีหลาย module และเพื่อสำหรับการขยายไปสู่แอปพลิเคชั่นขนาดใหญ่
 
-    *Why?*: Provides easy way to use task automation to load all module definitions first, then all other angular files (for bundling).
+    *ทำไม?*: สร้างวิธีที่ง่ายในการทำ automation สำหรับการโหลดทุก ๆ module แล้วตามด้วยโหลดไฟล์อื่น ๆ
 
 ### Configuration
-###### [Style [Y128](#style-y128)]
+###### [รูปแบบ [Y128](#style-y128)]
 
-  - Separate configuration for a module into its own file named after the module. A configuration file for the main `app` module is named `app.config.js` (or simply `config.js`). A configuration for a module named `admin.module.js` is named `admin.config.js`.
+  - แยกการตั้งค่าออกมาสำหรับแต่ละ module โดยใช้ชื่อไฟล์เป็นชื่อ module ตามด้วย `config` เช่น สำหรับ `app` module ให้ตั้งชื่อ `app.config.js` หรือสำหรับ `admin.module.js` ให้ตั้งชื่อ `admin.config.js` เป็นต้น
 
-    *Why?*: Separates configuration from module definition, components, and active code.
+    *ทำไม?*: เพื่อแยกการตั้งค่าออกมาจากส่วนอื่น ๆ
 
-    *Why?*: Provides a identifiable place to set configuration for a module.
+    *ทำไม?*: เพื่อสร้างไฟล์สำหรับการตั้งค่าของ module
 
 ### Routes
-###### [Style [Y129](#style-y129)]
+###### [รูปแบบ [Y129](#style-y129)]
 
-  - Separate route configuration into its own file. Examples might be `app.route.js` for the main module and `admin.route.js` for the `admin` module. Even in smaller apps I prefer this separation from the rest of the configuration.
+  - แยก route ออกเป็นไฟล์แยกสำหรับ module เช่น `app.route.js` สำหรับ module หลัก และ `admin.route.js` สำหรับ `admin` module และถึงแม้จะเป็นแอปขนาดเล็กผมก็ยังชอบวิธีนี้มากกว่าการรวม route ไว้ในไฟล์เดียว
 
-**[Back to top](#table-of-contents)**
+**[กลับไปที่สารบัญ](#table-of-contents)**
 
 ## Application Structure LIFT Principle
 ### LIFT
